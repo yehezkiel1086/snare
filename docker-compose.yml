@@ -1,6 +1,8 @@
-version: '2.3'
+#version: '2.3'
 
 networks:
+  tanner_local:
+    external: true
   snare_local:
 
 services:
@@ -14,6 +16,10 @@ services:
     tty: true
     networks:
      - snare_local
+     - tanner_local
     ports:
      - "80:80"
     image: "mushorg/snare:latest"
+    environment:
+      #- TANNER=tanner_api
+      - TANNER=tanner
